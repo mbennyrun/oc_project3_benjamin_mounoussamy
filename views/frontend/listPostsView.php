@@ -16,8 +16,8 @@
 		{
 		?>
 		    <h3>
-		        <?= htmlspecialchars($data['title']) ?>
-		        <em>le <?= $data['date_create_fr'] ?></em>
+		        <a href="index.php?action=post&amp;id=<?=$data['id']?>"> <?= htmlspecialchars($data['title']) ?>
+		        <em>le <?= $data['date_create_fr'] ?></em></a>
 		    </h3>
 		    
 		    <p>
