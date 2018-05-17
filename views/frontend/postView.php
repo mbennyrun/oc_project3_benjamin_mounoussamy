@@ -27,6 +27,14 @@ while ($comment = $comments->fetch())
 }
 ?>
 
+<form action="index.php?action=newComment&amp;id=<?= $post['id'] ?>" method="post">
+        <p>
+        <label for="author">Pseudo</label> : <input type="text" name="author" id="author" /><br />
+        <label for="comment">Message</label> :  <textarea name="comment" id="comment" ></textarea><br />
+        <input type="submit" value="Envoyer" />
+		</p>
+</form>
+
 <?php $content = ob_get_clean(); ?>
 
 <?php require('template.php'); ?>

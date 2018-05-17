@@ -27,4 +27,13 @@ class PostsManager extends Manager
 
         return $comments;
     }
+
+    public function addComment($postId, $author, $comment)
+    {
+        $db = $this->dbConnect();
+        $newcomment = $db->prepare('INSERT INTO posts_comments (post_id, author, comment, comment_date) VALUES(?, ?, ?, NOW())');
+        $result = $newcomment->execute(array($postId, $author, $comment));
+
+        return $newcomment;
+    }
 }
