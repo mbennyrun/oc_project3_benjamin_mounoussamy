@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  mar. 15 mai 2018 à 13:03
+-- Généré le :  ven. 18 mai 2018 à 13:00
 -- Version du serveur :  5.7.19
 -- Version de PHP :  7.1.9
 
@@ -61,21 +61,23 @@ CREATE TABLE IF NOT EXISTS `posts_comments` (
   `author` varchar(255) NOT NULL,
   `comment` text NOT NULL,
   `comment_date` datetime NOT NULL,
+  `comment_flag` int(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=14 DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `posts_comments`
 --
 
-INSERT INTO `posts_comments` (`id`, `post_id`, `author`, `comment`, `comment_date`) VALUES
-(1, 1, 'Lui', 'Bon début.', '2018-04-21 11:00:00'),
-(2, 2, 'Lui', 'Moyen, vraiment pas terrible.', '2018-04-21 12:00:00'),
-(5, 2, 'Elle', 'Correct.', '2018-05-05 13:45:56'),
-(6, 4, 'Nous', 'Pas mal du tout, continue comme ça !', '2018-05-12 10:43:55'),
-(7, 1, 'Elle', 'Courage.', '2018-05-12 12:52:28'),
-(8, 3, 'Eux', 'Pas mal.', '2018-05-12 12:59:31'),
-(10, 3, 'Lui', 'Nul à chier.', '2018-05-12 13:05:37');
+INSERT INTO `posts_comments` (`id`, `post_id`, `author`, `comment`, `comment_date`, `comment_flag`) VALUES
+(13, 1, 'Lui', 'Bon début.', '2018-05-17 15:42:49', 0),
+(12, 2, 'Lui', 'Moyen, vraiment pas terrible.', '2018-05-17 15:42:14', 0),
+(5, 2, 'Elle', 'Correct.', '2018-05-05 13:45:56', 0),
+(6, 4, 'Nous', 'Pas mal du tout, continue comme ça !', '2018-05-12 10:43:55', 0),
+(7, 1, 'Elle', 'Courage.', '2018-05-12 12:52:28', 0),
+(8, 3, 'Eux', 'Pas mal.', '2018-05-12 12:59:31', 0),
+(10, 3, 'Lui', 'Nul à chier.', '2018-05-12 13:05:37', 0),
+(11, 5, 'Lui', 'Intéressant, à voir où ça va mener.', '2018-05-17 15:40:55', 0);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
