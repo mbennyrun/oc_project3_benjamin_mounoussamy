@@ -36,6 +36,15 @@ if (isset($_GET['action'])) {
             echo 'Erreur : aucun identifiant de billet envoyé';
         }
     }
+    elseif ($_GET['action'] == 'flag') 
+    {
+        if (!empty($_GET['idComment']) && !empty($_GET['idPost'])) {
+            flag();
+        }
+        else {
+            echo 'Erreur : Aucun commentaire à signalé';
+        }
+    }
     elseif ($_GET['action'] == 'newComment') {
         if (isset($_GET['id']) && $_GET['id'] > 0) {
             if (!empty($_POST['author']) && !empty($_POST['comment'])) {

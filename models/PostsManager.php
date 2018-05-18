@@ -28,6 +28,15 @@ class PostsManager extends Manager
         return $comments;
     }
 
+    public function flagComment($postId)
+    {            
+        $db = $this->dbConnect();
+        $flag = $db->prepare('UPDATE posts_comments SET comment_flag = 1 WHERE id = ?');
+        $success = $flag->execute(array($postId));
+
+        return $success;
+    }
+
     public function addComment($postId, $author, $comment)
     {
         $db = $this->dbConnect();

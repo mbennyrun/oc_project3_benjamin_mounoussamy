@@ -25,6 +25,13 @@ function post()
     require(ABSOLUTE_PATH.'/views/frontend/postView.php');
 }
 
+function flag()
+{
+    $Flag = new PostsManager();
+    $flag = $Flag->flagComment($_GET['idComment']);
+    header('Location: index.php?action=post&id=' . $_GET['idPost']);
+}
+
 function newComment($postId, $author, $comment)
 {
     $Newcomment = new PostsManager();

@@ -23,6 +23,9 @@ while ($comment = $comments->fetch())
 ?>
     <p><strong><?= htmlspecialchars($comment['author']) ?></strong> le <?= $comment['comment_date_fr'] ?></p>
     <p><?= nl2br(htmlspecialchars($comment['comment'])) ?></p>
+    <form action="index.php?action=flag&idComment=<?= $comment['id'] ?>&idPost=<?=$post['id'] ?>" method="post">
+        <input type="submit" value="Signaler le commentaire">
+    </form><br />
 <?php
 }
 ?>
