@@ -9,6 +9,14 @@ class PostsManager extends Manager
         return $req;
     }
 
+    public function getAllposts()
+    {
+        $db = $this->dbConnect();
+        $req = $db->query('SELECT id, title, content, DATE_FORMAT(date_create, \'%d/%m/%Y à %Hh%imin%ss\') AS date_create_fr FROM posts ORDER BY date_create DESC');
+
+        return $req;
+    }
+
     public function getPost($postId)
     {
         $db = $this->dbConnect();
@@ -44,5 +52,32 @@ class PostsManager extends Manager
         $result = $newcomment->execute(array($postId, $author, $comment));
 
         return $newcomment;
+    }
+
+    public function addPost($title, $content)
+    {
+        $db = $this->dbConnect();
+        $newpost = $db->prepare('INSERT INTO posts (title, content, date_create) VALUES(?, ?, NOW())');
+        $result = $newpost->execute(array($title, $content));
+
+        return $newpost;
+    }
+
+    public function updatePost($postId, $title, $content)
+    {
+        $db = $this->dbConnect();
+        $editpost = $db->prepare('UPDATE posts SET title = ?, content = ?, date_create = NOW() WHERE id = ?');
+        $editpost->execute(array($title, $content, $postId));
+        
+        return $editpost;
+    }
+
+    public function deletePost($postId)
+    {
+        $db = $this->dbConnect();
+        $deadpost = $db->prepare('DELETE FROM posts WHERE id = ?');
+        $deadpost->execute(array($postId));
+
+        return $deadpost;    
     }
 }
