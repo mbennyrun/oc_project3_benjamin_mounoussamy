@@ -54,6 +54,42 @@ class PostsManager extends Manager
         return $newcomment;
     }
 
+    public function flaggedComments($postId)
+    {
+        $db = $this->dbConnect();
+        $flaggedcomment = $db->prepare('SELECT id, author, comment, DATE_FORMAT(comment_date, \'%d/%m/%Y à %Hh%imin%ss\') AS comment_date_fr, comment_flag FROM posts_comments WHERE post_id = ? AND comment_flag = 1 ORDER BY comment_date DESC');
+        $flaggedcomment->execute(array($postId));
+
+        return $flaggedcomment; 
+    }
+
+    public function noflaggedComments($postId)
+    {
+        $db = $this->dbConnect();
+        $flaggedcomment = $db->prepare('SELECT id, author, comment, DATE_FORMAT(comment_date, \'%d/%m/%Y à %Hh%imin%ss\') AS comment_date_fr, comment_flag FROM posts_comments WHERE post_id = ? AND comment_flag = 0 ORDER BY comment_date DESC');
+        $flaggedcomment->execute(array($postId));
+
+        return $flaggedcomment; 
+    }
+
+    public function unflagComment($postId)
+    {            
+        $db = $this->dbConnect();
+        $unflag = $db->prepare('UPDATE posts_comments SET comment_flag = 0 WHERE id = ?');
+        $unflag->execute(array($postId));
+
+        return $unflag;
+    }
+
+    public function deleteComment($postId)
+    {
+        $db = $this->dbConnect();
+        $deadcomment = $db->prepare('DELETE FROM posts_comments WHERE id = ?');
+        $deadcomment->execute(array($postId));
+
+        return $deadcomment;    
+    }
+
     public function addPost($title, $content)
     {
         $db = $this->dbConnect();
@@ -79,5 +115,14 @@ class PostsManager extends Manager
         $deadpost->execute(array($postId));
 
         return $deadpost;    
+    }
+
+    public function deleteAllcomment($postId)
+    {
+        $db = $this->dbConnect();
+        $deadallcomment = $db->prepare('DELETE FROM posts_comments WHERE post_id = ?');
+        $deadallcomment->execute(array($postId));
+
+        return $deadallcomment;
     }
 }

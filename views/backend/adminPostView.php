@@ -34,6 +34,41 @@
 
 </div>
 
+<h2>Commentaires</h2>
+
+<?php
+while ($flagcomment = $flagcomments->fetch())
+{
+?>
+    <p><em><strong><?= htmlspecialchars($flagcomment['author']) ?></strong> le <?= $flagcomment['comment_date_fr'] ?></p>
+    <p><?= nl2br(htmlspecialchars($flagcomment['comment'])) ?></em></p>
+    <form action="admin.php?action=unflag&idComment=<?= $flagcomment['id'] ?>&idPost=<?=$post['id'] ?>" method="post">
+        <p>
+        <input type="submit" value="Désignaler le Commentaire" />
+        </p>
+    </form>
+    <form action="admin.php?action=delComment&idComment=<?= $flagcomment['id'] ?>&idPost=<?=$post['id'] ?>" method="post">
+        <p>
+        <input type="submit" value="Supprimer le Commentaire" />
+        </p>
+    </form>
+
+<?php
+}
+?>
+
+<br /><br/>
+
+<?php
+while ($comment = $comments->fetch())
+{
+?>
+    <p><strong><?= htmlspecialchars($comment['author']) ?></strong> le <?= $comment['comment_date_fr'] ?></p>
+    <p><?= nl2br(htmlspecialchars($comment['comment'])) ?></p>
+<?php
+}
+?>
+
 <?php $content = ob_get_clean(); ?>
 
 <?php require('template.php'); ?>

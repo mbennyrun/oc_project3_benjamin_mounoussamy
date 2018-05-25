@@ -65,6 +65,24 @@ if (isset($_GET['action'])) {
             echo 'Erreur : aucun identifiant de billet envoyé';
         }
     }
+    elseif ($_GET['action'] == 'unflag') 
+    {
+        if (!empty($_GET['idComment']) && !empty($_GET['idPost'])) {
+            unflag();
+        }
+        else {
+            echo 'Erreur : Aucun commentaire signalé';
+        }
+    }
+    elseif ($_GET['action'] == 'delComment') 
+    {
+        if (!empty($_GET['idComment']) && !empty($_GET['idPost'])) {
+            delComment($_GET['idComment']);
+        }
+        else {
+            echo 'Erreur : Aucun commentaire à supprimé';
+        }
+    }
 }
 else {
     homepage();
