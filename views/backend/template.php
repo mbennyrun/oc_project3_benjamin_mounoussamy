@@ -13,15 +13,15 @@
   	});
   	</script>
 
-	<title>Progressus - Free business bootstrap template by GetTemplate</title>
-	<link rel="shortcut icon" href="public/themes/frontend/progressus/assets/images/gt_favicon.png">
+	<title>Billet simple pour l'Alaska - Jean Forteroche</title>
+	<link rel="shortcut icon" href="public/themes/frontend/progressus/assets/images/alaska_favicon.png">
 	<link rel="stylesheet" media="screen" href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,700">
 	<link rel="stylesheet" href="public/themes/frontend/progressus/assets/css/bootstrap.min.css">
 	<link rel="stylesheet" href="public/themes/frontend/progressus/assets/css/font-awesome.min.css">
     <!-- Custom styles for our template -->
 	<link rel="stylesheet" href="public/themes/frontend/progressus/assets/css/bootstrap-theme.css" media="screen" >
 	<link rel="stylesheet" href="public/themes/frontend/progressus/assets/css/main.css">
-
+	<link rel="stylesheet" href="custom.css"/>
 	<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
 	<!--[if lt IE 9]>
 	<script src="public/themes/frontend/progressus/assets/js/html5shiv.js"></script>
@@ -36,21 +36,13 @@
 			<div class="navbar-header">
 				<!-- Button for smallest screens -->
 				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"><span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
-				<a class="navbar-brand" href="index.html"><img src="public/themes/frontend/progressus/assets/images/logo.png" alt="Progressus HTML5 template"></a>
+				<a class="navbar-brand" href="index.php"><img src="public/themes/frontend/progressus/assets/images/alaska_logo.png" alt="Logo alaska"></a>
 			</div>
 			<div class="navbar-collapse collapse">
 				<ul class="nav navbar-nav pull-right">
-					<li class="active"><a href="#">Accueil</a></li>
-					<li><a href="about.html">About</a></li>
-					<li class="dropdown">
-						<a href="#" class="dropdown-toggle" data-toggle="dropdown">More Pages <b class="caret"></b></a>
-						<ul class="dropdown-menu">
-							<li><a href="sidebar-left.html">Left Sidebar</a></li>
-							<li class="active"><a href="sidebar-right.html">Right Sidebar</a></li>
-						</ul>
-					</li>
-					<li><a href="contact.html">Contact</a></li>
-					<li><a class="btn" href="signin.html">CONNECTEZ-VOUS</a></li>
+					<li class="active"><a href="index.php">Accueil</a></li>
+					<li><a href="index.php?action=listAllposts">Chapitres</a></li>
+					<li><a class="btn" href="admin.php">CONNECTEZ-VOUS</a></li>
 				</ul>
 			</div><!--/.nav-collapse -->
 		</div>
@@ -61,9 +53,9 @@
 	<header id="head">
 		<div class="container">
 			<div class="row">
-				<h1 class="lead" style="font-family: lobster;font-size:50px;">Benjamin MOUNOUSSAMY - Blog d'un écrivain au parcours cabossé</h1>
+				<h1 class="lead" style="font-family: lobster;font-size:50px;">Billet simple pour l'Alaska</h1>
 				<p class="tagline">					
-                    Ca a pris du temps pour s'y mettre mais on y arrive petit à petit.   
+                    Un roman de Jean Forteroche.   
 				</p>
 			</div>
 		</div>
@@ -71,7 +63,7 @@
 	<!-- /Header -->
 
 
-	<div class="container text-center">
+	<div class="container">
 		<br> <br>
 			<?= $content ?>
 		</p>
@@ -107,16 +99,17 @@
 					<div class="col-md-3 widget">
 						<h3 class="widget-title">Contact</h3>
 						<div class="widget-body">
-							<p>+234 23 9873237<br>
-								<a href="mailto:#">some.email@somewhere.com</a><br>
-								<br>
-								234 Hidden Pond Road, Ashland City, TN 37015
+							<p>Adresse :<br />
+							12 Rue du Général de Gaulle<br />
+							97434 La Réunion<br /><br />
+							Téléphone :<br />
+							02 62 40 70 37
 							</p>	
 						</div>
 					</div>
 
 					<div class="col-md-3 widget">
-						<h3 class="widget-title">Follow me</h3>
+						<h3 class="widget-title">Suivez-moi</h3>
 						<div class="widget-body">
 							<p class="follow-me-icons">
 								<a href=""><i class="fa fa-twitter fa-2"></i></a>
@@ -128,10 +121,10 @@
 					</div>
 
 					<div class="col-md-6 widget">
-						<h3 class="widget-title">Text widget</h3>
+						<h3 class="widget-title">Présentation</h3>
 						<div class="widget-body">
-							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Excepturi, dolores, quibusdam architecto voluptatem amet fugiat nesciunt placeat provident cumque accusamus itaque voluptate modi quidem dolore optio velit hic iusto vero praesentium repellat commodi ad id expedita cupiditate repellendus possimus unde?</p>
-							<p>Eius consequatur nihil quibusdam! Laborum, rerum, quis, inventore ipsa autem repellat provident assumenda labore soluta minima alias temporibus facere distinctio quas adipisci nam sunt explicabo officia tenetur at ea quos doloribus dolorum voluptate reprehenderit architecto sint libero illo et hic.</p>
+							<p>Jean Forteroche, l'auteur et écrivain célèbre, vous présente son nouveau roman "Billet simple pour l'Alaska", un thriller hâletant et passionant qui vous fera froid dans le dos.</p>
+							<p>Suivez l'évolution de l'histoire au fil des chapitres publiés exclusivement par l'auteur sur ce site.</p>
 						</div>
 					</div>
 
@@ -146,11 +139,9 @@
 					<div class="col-md-6 widget">
 						<div class="widget-body">
 							<p class="simplenav">
-								<a href="#">Home</a> | 
-								<a href="about.html">About</a> |
-								<a href="sidebar-right.html">Sidebar</a> |
-								<a href="contact.html">Contact</a> |
-								<b><a href="signup.html">Sign up</a></b>
+								<a href="index.php">Accueil</a> | 
+								<a href="index.php?action=listAllposts">Chapitres</a> |
+								<b><a href="admin.php">Connectez-vous</a></b>
 							</p>
 						</div>
 					</div>
@@ -158,7 +149,7 @@
 					<div class="col-md-6 widget">
 						<div class="widget-body">
 							<p class="text-right">
-								Copyright &copy; 2014, Your name. Designed by <a href="http://gettemplate.com/" rel="designer">gettemplate</a> 
+								Copyright &copy; 2018, Benjamin Mounoussamy. Designed by <a href="http://gettemplate.com/" rel="designer">gettemplate</a> 
 							</p>
 						</div>
 					</div>

@@ -1,0 +1,35 @@
+h1, h2
+{
+    text-align:center;
+}
+
+mark
+{
+	background-color:#FAF67A; 
+}
+
+h1 + p
+{
+	text-align:center;
+}
+
+h3 + p
+{
+	height: 125px;
+	overflow: hidden;
+}
+
+.connection
+{
+	    text-align:center;
+}
+
+.comments
+{
+	    text-align:center;
+}
+
+.title
+{
+	    text-align:center;
+}
