@@ -3,10 +3,13 @@
 <?php ob_start(); ?>
 <h1>Administration</h1>
 
+<p><a href="admin.php?action=disconnect">Déconnexion</a></p><br />
+
+
 <div class="news">
-    <h3>
-        Liste des posts
-    </h3>    
+    <h2>
+        Chapitres
+    </h2>    
 </div>
 
 <div class="content">
@@ -16,12 +19,12 @@
 		{
 		?>
 		    <h3>
-		        <a href="admin.php?action=post&amp;id=<?=$data['id']?>"> <?= htmlspecialchars($data['title']) ?>
+		        <a href="admin.php?action=post&amp;id=<?=$data['id']?>"> <?= $data['title'] ?>
 		        <em>le <?= $data['date_create_fr'] ?></em></a>
 		    </h3>
 		    
 		    <p>
-		        <?= nl2br(htmlspecialchars($data['content'])) ?>
+		        <?= nl2br($data['content']) ?>
 		    </p>
 			<?php
 		}
@@ -33,9 +36,9 @@
 	}
 	?>
 
-	<h1>Ajouter un Article</h1>
+	<h2>Ajouter un Chapitre</h2>
 
-	  <form action="admin.php?action=newPost" method="post">
+	  <form class="title" action="admin.php?action=newPost" method="post">
 	  	<p>
 	  	<label for="title">Titre</label> : <input type="text" name="title" id="title" /> <br /><br />
 	    <textarea name="content" id="content"></textarea><br /><br />

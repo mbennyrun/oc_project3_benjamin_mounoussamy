@@ -18,47 +18,38 @@ function __autoload($className) {
 }
 
 
-
 require_once(ABSOLUTE_PATH. '/controllers/frontend.php');
 
 
+$action = '';
+if ( !empty($_GET['action']) ) {
+    $action = $_GET['action'];
+}
 
+switch ( $action ) {
 
-if (isset($_GET['action'])) {
-    if ($_GET['action'] == 'listPosts') {
+    case 'listPosts':
         listPosts();
-    }
-    elseif ($_GET['action'] == 'post') {
-        if (isset($_GET['id']) && $_GET['id'] > 0) {
-            post();
-        }
-        else {
-            echo 'Erreur : aucun identifiant de billet envoyé';
-        }
-    }
-    elseif ($_GET['action'] == 'flag') 
-    {
-        if (!empty($_GET['idComment']) && !empty($_GET['idPost'])) {
-            flag();
-        }
-        else {
-            echo 'Erreur : Aucun commentaire à signalé';
-        }
-    }
-    elseif ($_GET['action'] == 'newComment') {
-        if (isset($_GET['id']) && $_GET['id'] > 0) {
-            if (!empty($_POST['author']) && !empty($_POST['comment'])) {
-                newComment($_GET['id'], $_POST['author'], $_POST['comment']);
-            }
-            else {
-                echo 'Erreur : tous les champs ne sont pas remplis !';
-            }
-        }
-        else {
-            echo 'Erreur : aucun identifiant de billet envoyé';
-        }
-    }
+        break;
+
+    case 'listAllposts':
+        listAllposts();
+        break;
+
+    case 'post':
+        post();
+        break;
+
+    case 'flag':
+        flag();
+        break;
+
+    case 'newComment':
+        newComment();
+        break;
+
+    default:
+        homepage();
+        break;
 }
-else {
-    homepage();
-}
+

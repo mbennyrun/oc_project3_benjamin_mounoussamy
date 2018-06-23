@@ -1,13 +1,9 @@
 <?php $title = 'Liste des Posts'; ?>
 
 <?php ob_start(); ?>
-<h1>Mon super blog !</h1>
+<h1>Derniers Chapitres</h1>
 
-<div class="news">
-    <h3>
-        Liste des posts
-    </h3>    
-</div>
+<p><a href="index.php?action=listAllposts">Voir plus de Chapitres</a></p>
 
 <div class="content">
 	<?php
@@ -16,13 +12,15 @@
 		{
 		?>
 		    <h3>
-		        <a href="index.php?action=post&amp;id=<?=$data['id']?>"> <?= htmlspecialchars($data['title']) ?>
+		        <a href="index.php?action=post&amp;id=<?=$data['id']?>"> <?= $data['title'] ?>
 		        <em>le <?= $data['date_create_fr'] ?></em></a>
 		    </h3>
 		    
 		    <p>
-		        <?= nl2br(htmlspecialchars($data['content'])) ?>
+		        <?= nl2br($data['content']) ?>
 		    </p>
+		    	<a href="index.php?action=post&amp;id=<?=$data['id']?>"> Lire la suite...</a>
+		    <p>
 			<?php
 		}
 	} 
@@ -32,6 +30,9 @@
 		<?php
 	}
 	?>
+	<br />
+	
+
 </div>
 
 <?php $content = ob_get_clean(); ?>

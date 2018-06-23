@@ -1,5 +1,7 @@
 <?php
 
+session_start();
+
 // Definition du path absolu
 define("ABSOLUTE_PATH", dirname(__FILE__));
 
@@ -17,77 +19,58 @@ function __autoload($className) {
     }
 }
 
-
-
 require_once(ABSOLUTE_PATH. '/controllers/backend.php');
 
 
 
+$action = '';
+if ( !empty($_GET['action']) ) {
+    $action = $_GET['action'];
+}
 
-if (isset($_GET['action'])) {
-    if ($_GET['action'] == 'listPosts') {
+switch ( $action ) {
+
+    case 'formConnect':
+        formConnect();
+        break;
+
+    case 'submitFormConnect':
+        submitFormConnect();
+        break;
+
+    case 'listPosts':
         listPosts();
-    }
-    elseif ($_GET['action'] == 'post') {
-        if (isset($_GET['id']) && $_GET['id'] > 0) {
-            post();
-        }
-        else {
-            echo 'Erreur : aucun identifiant de billet envoyé';
-        }
-    }
-    elseif ($_GET['action'] == 'newPost') {
-            if (!empty($_POST['title']) && !empty($_POST['content'])) {
-                newPost($_POST['title'], $_POST['content']);
-            }
-            else {
-                echo 'Erreur : tous les champs ne sont pas remplis !';
-            }
-    }
-    elseif ($_GET['action'] == 'editPost') {
-        if (isset($_GET['id']) && $_GET['id'] > 0) {
-            if (!empty($_POST['title']) && !empty($_POST['content'])) {
-                editPost($_GET['id'], $_POST['title'], $_POST['content']);
-            }
-            else {
-                echo 'Erreur : tous les champs ne sont pas remplis !';
-            }
-        }
-        else {
-            echo 'Erreur : aucun identifiant de billet envoyé';
-        }
-    }
-    elseif ($_GET['action'] == 'delPost') {
-        if (isset($_GET['id']) && $_GET['id'] > 0) {
-            delPost($_GET['id']);
-        }
-        else {
-            echo 'Erreur : aucun identifiant de billet envoyé';
-        }
-    }
-    elseif ($_GET['action'] == 'unflag') 
-    {
-        if (!empty($_GET['idComment']) && !empty($_GET['idPost'])) {
-            unflag();
-        }
-        else {
-            echo 'Erreur : Aucun commentaire signalé';
-        }
-    }
-    elseif ($_GET['action'] == 'delComment') 
-    {
-        if (!empty($_GET['idComment']) && !empty($_GET['idPost'])) {
-            delComment($_GET['idComment']);
-        }
-        else {
-            echo 'Erreur : Aucun commentaire à supprimé';
-        }
-    }
+        break;
+    
+    case 'post':
+        post();
+        break;
+
+    case 'newPost':
+        newPost();
+        break;
+
+    case 'editPost':
+        editPost();
+        break;
+
+    case 'delPost':
+        delPost();
+        break;
+
+    case 'unflag':
+        unflag();
+        break;
+    
+    case 'delComment':
+        delComment();
+        break;
+
+    case 'disconnect':
+        disconnect();
+        break;
+        
+    default:
+        homepage();
+        break;
 }
-else {
-    homepage();
-}
-
-
-
-

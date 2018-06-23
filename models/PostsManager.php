@@ -1,10 +1,11 @@
 <?php
+
 class PostsManager extends Manager
 {
     public function getPosts()
     {
         $db = $this->dbConnect();
-        $req = $db->query('SELECT id, title, content, DATE_FORMAT(date_create, \'%d/%m/%Y à %Hh%imin%ss\') AS date_create_fr FROM posts ORDER BY date_create DESC LIMIT 0, 5');
+        $req = $db->query('SELECT id, title, content, DATE_FORMAT(date_create, \'%d/%m/%Y à %Hh%imin%ss\') AS date_create_fr FROM posts ORDER BY date_create DESC LIMIT 0, 3');
 
         return $req;
     }
@@ -102,7 +103,7 @@ class PostsManager extends Manager
     public function updatePost($postId, $title, $content)
     {
         $db = $this->dbConnect();
-        $editpost = $db->prepare('UPDATE posts SET title = ?, content = ?, date_create = NOW() WHERE id = ?');
+        $editpost = $db->prepare('UPDATE posts SET title = ?, content = ? WHERE id = ?');
         $editpost->execute(array($title, $content, $postId));
         
         return $editpost;
@@ -124,5 +125,15 @@ class PostsManager extends Manager
         $deadallcomment->execute(array($postId));
 
         return $deadallcomment;
+    }
+
+    public function connect($login, $password)
+    {
+        $db = $this->dbConnect();
+        $req = $db->prepare('SELECT login FROM connection WHERE login = ? AND password = md5(?)');
+        $req->execute(array($login, $password));
+        $connect = $req->fetch(PDO::FETCH_ASSOC);
+
+        return $connect;        
     }
 }
