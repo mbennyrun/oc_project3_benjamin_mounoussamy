@@ -23,9 +23,9 @@
 		        <em>le <?= $data['date_create_fr'] ?></em></a>
 		    </h3>
 		    
-		    <p>
+		    <div class="chapter">
 		        <?= nl2br($data['content']) ?>
-		    </p>
+		    </div>
 			<?php
 		}
 	} 

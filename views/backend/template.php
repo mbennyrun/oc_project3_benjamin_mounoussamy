@@ -121,7 +121,7 @@
 					</div>
 
 					<div class="col-md-6 widget">
-						<h3 class="widget-title">Présentation</h3>
+						<h3 class="widget-title">A Propos</h3>
 						<div class="widget-body">
 							<p>Jean Forteroche, l'auteur et écrivain célèbre, vous présente son nouveau roman "Billet simple pour l'Alaska", un thriller hâletant et passionant qui vous fera froid dans le dos.</p>
 							<p>Suivez l'évolution de l'histoire au fil des chapitres publiés exclusivement par l'auteur sur ce site.</p>

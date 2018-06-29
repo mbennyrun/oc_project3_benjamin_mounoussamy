@@ -16,11 +16,10 @@
 		        <em>le <?= $data['date_create_fr'] ?></em></a>
 		    </h3>
 		    
-		    <p>
+		    <div class="chapter">
 		        <?= nl2br($data['content']) ?>
-		    </p>
-		    	<a href="index.php?action=post&amp;id=<?=$data['id']?>"> Lire la suite...</a>
-		    <p>
+		    </div>
+		    <p><a href="index.php?action=post&amp;id=<?=$data['id']?>"> Lire la suite...</a></p>
 			<?php
 		}
 	} 

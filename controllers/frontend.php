@@ -19,7 +19,7 @@ function listAllposts()
 {
 	$Post 		= new PostsManager();
     $Listallposts = $Post->getAllposts();
-	require(ABSOLUTE_PATH.'/views/frontend/PostsView.php');
+	require(ABSOLUTE_PATH.'/views/frontend/postsView.php');
 }
 
 function post()
