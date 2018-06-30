@@ -21,7 +21,7 @@
     <!-- Custom styles for our template -->
 	<link rel="stylesheet" href="public/themes/frontend/progressus/assets/css/bootstrap-theme.css" media="screen" >
 	<link rel="stylesheet" href="public/themes/frontend/progressus/assets/css/main.css">
-	<link rel="stylesheet" href="custom.css"/>
+	<link rel="stylesheet" href="publi/css/custom.css"/>
 	<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
 	<!--[if lt IE 9]>
 	<script src="public/themes/frontend/progressus/assets/js/html5shiv.js"></script>
