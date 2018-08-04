@@ -130,10 +130,15 @@ class PostsManager extends Manager
     public function connect($login, $password)
     {
         $db = $this->dbConnect();
-        $req = $db->prepare('SELECT login FROM connection WHERE login = ? AND password = md5(?)');
-        $req->execute(array($login, $password));
-        $connect = $req->fetch(PDO::FETCH_ASSOC);
-
-        return $connect;        
+        $req = $db->prepare('SELECT login, password FROM connection WHERE login = ?');
+        $req->execute(array($login));
+        $dataUser = $req->fetch(PDO::FETCH_ASSOC);
+        if ($dataUser) {
+            $verPass  = password_verify($password, $dataUser["password"]);
+            if ($verPass == true) {
+                return $dataUser;
+            }  
+        }
+        return false;         
     }
 }

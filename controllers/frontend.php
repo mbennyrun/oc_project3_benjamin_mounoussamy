@@ -3,9 +3,9 @@
 
 function homepage()
 {
-	$Post 		= new PostsManager();
-    $Listposts = $Post->getPosts();
-	require(ABSOLUTE_PATH.'/views/frontend/listPostsView.php');
+	//header('Status : 404 Not Found');
+    header('HTTP/1.0 404 Not Found');
+    exit();
 }
 
 function listPosts()

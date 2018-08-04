@@ -1,4 +1,7 @@
 <?php
+//$hash     = password_hash('6gbW1lu#6h', PASSWORD_BCRYPT);
+//var_dump($hash);
+//die;
 
 // Definition du path absolu
 define("ABSOLUTE_PATH", dirname(__FILE__));
@@ -48,8 +51,11 @@ switch ( $action ) {
         newComment();
         break;
 
+    case '404':
+        echo 'La page n\'existe pas ou plus !';
+        break;
+
     default:
         homepage();
         break;
 }
-

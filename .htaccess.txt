@@ -1,0 +1,1 @@
+ErrorDocument 404 http://localhost/oc_project3_benjamin_mounoussamy/404.php

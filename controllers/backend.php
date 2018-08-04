@@ -3,7 +3,7 @@
 
 function homepage()
 {
-	Manager::checkSessionAndRedirect();
+	Security::checkSessionAndRedirect();
 	$Post 		= new PostsManager();
     $Listposts = $Post->getAllposts();
 	require(ABSOLUTE_PATH.'/views/backend/adminView.php');
@@ -11,7 +11,7 @@ function homepage()
 
 function listPosts()
 {
-	Manager::checkSessionAndRedirect();
+	Security::checkSessionAndRedirect();
 	$Post 		= new PostsManager();
     $Listposts = $Post->getAllposts();
 	require(ABSOLUTE_PATH.'/views/backend/adminView.php');
@@ -19,7 +19,7 @@ function listPosts()
 
 function post()
 {
-	Manager::checkSessionAndRedirect();
+	Security::checkSessionAndRedirect();
 	if ( !empty($_GET['id']) ) {
 		
 	    $Flagcomment = new PostsManager();
@@ -39,7 +39,7 @@ function post()
 
 function unflag()
 {
-	Manager::checkSessionAndRedirect();
+	Security::checkSessionAndRedirect();
 	if (! empty($_GET['idComment']) && ! empty($_GET['idPost'])) {
 
 		$Unflag = new PostsManager();
@@ -54,7 +54,7 @@ function unflag()
 
 function delComment()
 {
-	Manager::checkSessionAndRedirect();
+	Security::checkSessionAndRedirect();
 	if (! empty($_GET['idComment']) && ! empty($_GET['idPost'])) {
 
 		$postId 	 = $_GET['idPost'];
@@ -71,7 +71,7 @@ function delComment()
 
 function newPost()
 {
-	Manager::checkSessionAndRedirect();
+	Security::checkSessionAndRedirect();
 	if (! empty($_POST['title']) && ! empty($_POST['content'])) {
 
 		$title   = $_POST['title'];
@@ -89,7 +89,7 @@ function newPost()
 
 function editPost()
 {
-	Manager::checkSessionAndRedirect();
+	Security::checkSessionAndRedirect();
 	if ( ! empty($_GET['id']) && ! empty($_POST['title']) && ! empty($_POST['content'])) {
 
 		$postId  = $_GET['id'];
@@ -109,7 +109,7 @@ function editPost()
 
 function delPost()
 {
-	Manager::checkSessionAndRedirect();
+	Security::checkSessionAndRedirect();
 
 	if ( ! empty($_GET['id']) ) {
 
@@ -136,22 +136,25 @@ function submitFormConnect()
 {
 	$login 	  = strip_tags($_POST['login']);
 	$password = strip_tags($_POST['password']);
+	
+	$connectManager = new PostsManager();
 
-	$Connect = new PostsManager();
-
-	$connect = $Connect->connect($login, $password);
-    if(!empty($connect)) {
+	$connect = $connectManager->connect($login, $password);
+   	if(!empty($connect)) {
 		$_SESSION['user'] = $connect['login'];
     	header('Location: admin.php');
     }
     else {
     	header('Location: admin.php?action=formConnect');
     }
+
+	//var_dump($verPass);
+	//die;	
 }
 
 function disconnect()
 {
-	Manager::checkSessionAndRedirect();
+	Security::checkSessionAndRedirect();
 	session_destroy();
 	header('Location: admin.php?action=formConnect');
 }
