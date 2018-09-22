@@ -23,12 +23,10 @@ function post()
 	if ( !empty($_GET['id']) ) {
 		
 	    $Flagcomment = new PostsManager();
-	    $Comment = new PostsManager();
-	    $Post = new PostsManager();
 
-	    $comments = $Comment->noflaggedComments($_GET['id']);
+	    $comments = $Flagcomment->noflaggedComments($_GET['id']);
 	    $flagcomments = $Flagcomment->flaggedComments($_GET['id']);
-	    $post = $Post->getPost($_GET['id']);
+	    $post = $Flagcomment->getPost($_GET['id']);
 	    require(ABSOLUTE_PATH.'/views/backend/adminPostView.php');
 	} 
 	else {
@@ -116,10 +114,9 @@ function delPost()
 		$postId 		= $_GET['id'];
 
 		$Deadpost 		= new PostsManager();
-		$Deadallcomment = new PostsManager();
 
 		$deadpost = $Deadpost->deletePost($postId);
-		$deadallcomment = $Deadallcomment->deleteAllcomment($postId);	
+		$deadallcomment = $Deadpost->deleteAllcomment($postId);	
 		header('Location: admin.php');
 	}
 	else {
@@ -146,10 +143,7 @@ function submitFormConnect()
     }
     else {
     	header('Location: admin.php?action=formConnect');
-    }
-
-	//var_dump($verPass);
-	//die;	
+    }	
 }
 
 function disconnect()

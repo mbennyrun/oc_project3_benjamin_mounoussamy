@@ -1,18 +1,16 @@
 <?php
 
 class Manager
+
 {
-    protected function dbConnect()
+  protected static $instance;
+
+  public static function dbConnect()
+  {
+    if (is_null(self::$instance)) // Si on instancie notre classe pour la première fois.
     {
-        $db = new PDO('mysql:host=localhost;dbname=db_oc_project_3;charset=utf8', 'root', '');
-        return $db;
+      self::$instance = new PDO('mysql:host=localhost;dbname=db_oc_project_3;charset=utf8', 'root', '');
     }
-
-
-    public static function checkSessionAndRedirect() {
-
-    	if ( empty($_SESSION['user']) ) {
-    		header('Location: admin.php?action=formConnect');
-    	}
-    }
+    return self::$instance; // Sinon on retourne l'objet déjà instancié
+  }
 }

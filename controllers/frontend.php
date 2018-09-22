@@ -1,11 +1,16 @@
 <?php
 
+function error()
+{
+    header('HTTP/1.0 404 Not Found');
+    exit();
+}
 
 function homepage()
 {
-	//header('Status : 404 Not Found');
-    header('HTTP/1.0 404 Not Found');
-    exit();
+	$Post 		= new PostsManager();
+    $Listposts = $Post->getPosts();
+	require(ABSOLUTE_PATH.'/views/frontend/listPostsView.php');
 }
 
 function listPosts()
@@ -27,9 +32,8 @@ function post()
     if ( !empty($_GET['id']) ) {
 
     $Comment = new PostsManager();
-    $Post = new PostsManager();
 
-    $post = $Post->getPost($_GET['id']);
+    $post = $Comment->getPost($_GET['id']);
     $comments = $Comment->getComments($_GET['id']);
     require(ABSOLUTE_PATH.'/views/frontend/postView.php');
 	}
